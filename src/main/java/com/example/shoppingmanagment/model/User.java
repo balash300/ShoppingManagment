@@ -7,25 +7,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CurrentTimestamp;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
 @Data
 @Builder
-@Table(name = "cart_item")
+@Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
-public class cartItem {
-
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name = "session_id")
-    private Long sessionID;
-    @Column(name = "product_id")
-    private Long productID;
-    private Long quantity;
+    private String username;
+    @Column(name = "text", columnDefinition = "TEXT")
+    private String password;
+    @Column(name = "first_name", precision = 5, scale = 4)
+    private BigDecimal firstName;
+    @Column(name = "last_name")
+    private String lastName;
+    private String address;
+    private Long telephone;
     @Column(name = "created_at")
     @CurrentTimestamp
     private Date createdAt;

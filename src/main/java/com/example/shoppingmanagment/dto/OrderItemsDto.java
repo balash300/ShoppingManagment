@@ -1,17 +1,17 @@
-package com.example.shoppingmanagment.model;
+package com.example.shoppingmanagment.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+import java.util.Date;
+
 @Data
 @Builder
-@Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
-public class user {
+public class OrderItemsDto {
+    private Date createdAt;
+    private Date modifiedAt;
 }

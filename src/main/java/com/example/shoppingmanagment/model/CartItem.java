@@ -6,33 +6,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CurrentTimestamp;
-import org.hibernate.annotations.Type;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
 @Data
 @Builder
-@Table(name = "discount")
+@Table(name = "cart_item")
 @NoArgsConstructor
 @AllArgsConstructor
-public class discount {
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
-    @Column(name = "name", columnDefinition = "varchar(max)")
-    private String name;
-    @Column(name = "desc", columnDefinition = "TEXT")
-    private String desc;
-    @Column(name = "discount_percent", precision = 5, scale = 4)
-    private BigDecimal similarity;
+    @Column(name = "session_id")
+    private Long sessionID;
+    @Column(name = "product_id")
+    private Long productID;
+    private Long quantity;
     @Column(name = "created_at")
     @CurrentTimestamp
     private Date createdAt;
     @Column(name = "modified_at")
     @CurrentTimestamp
     private Date modifiedAt;
-
 }
