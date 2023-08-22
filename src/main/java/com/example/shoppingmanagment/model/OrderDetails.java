@@ -9,6 +9,8 @@ import org.hibernate.annotations.CurrentTimestamp;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,18 +21,27 @@ import java.sql.Date;
 public class OrderDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
-    @Column(name = "user_id")
-    private String userID;
     @Column(name = "total", precision = 5, scale = 4)
     private BigDecimal total;
-    @Column(name = "payment_id")
-    private Long paymentID;
     @Column(name = "created_at")
     @CurrentTimestamp
     private Date createdAt;
     @Column(name = "modified_at")
     @CurrentTimestamp
     private Date modifiedAt;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Users users;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "payment_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private PaymentDetails paymentDetails;
+
+    @OneToMany(mappedBy = "orderDetails", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItems> orderItemses = new ArrayList<>();
+
 }

@@ -18,17 +18,22 @@ import java.sql.Date;
 public class OrderItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
-    @Column(name = "order_id")
-    private Long orderID;
-    @Column(name = "product_id")
-    private Long productID;
     @Column(name = "created_at")
     @CurrentTimestamp
     private Date createdAt;
     @Column(name = "modified_at")
     @CurrentTimestamp
     private Date modifiedAt;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Product product;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private OrderDetails orderDetails;
 
 }

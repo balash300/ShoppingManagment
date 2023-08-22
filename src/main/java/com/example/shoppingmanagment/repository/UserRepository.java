@@ -1,10 +1,12 @@
 package com.example.shoppingmanagment.repository;
 
-import com.example.shoppingmanagment.model.User;
+import com.example.shoppingmanagment.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+@Repository
+public interface UserRepository extends JpaRepository<Users, Long> {
 
-    User getUsersById(Long id);
+    Users getUserById(Long id);
 
 }

@@ -1,4 +1,4 @@
-package com.example.shoppingmanagment.dto;
+package com.example.shoppingmanagment.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,13 +12,10 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
+public class UserResponse {
     private String username;
-    private String password;
     private BigDecimal firstName;
     private String lastName;
-    private String address;
-    private Long telephone;
     private Date createdAt;
     private Date modifiedAt;
 }

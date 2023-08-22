@@ -1,4 +1,4 @@
-package com.example.shoppingmanagment.dto;
+package com.example.shoppingmanagment.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CartItemDto {
+public class CartItemResponse {
     private Long quantity;
     private Date createdAt;
     private Date modifiedAt;

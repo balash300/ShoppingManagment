@@ -14,9 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class OrderDetailsRequest {
     private Long id;
-    private String userID;
     private BigDecimal total;
-    private Long paymentID;
     private Date createdAt;
     private Date modifiedAt;
 }

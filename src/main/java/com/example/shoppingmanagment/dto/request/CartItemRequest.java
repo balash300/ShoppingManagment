@@ -13,8 +13,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class CartItemRequest {
     private Long id;
-    private Long sessionID;
-    private Long productID;
     private Long quantity;
     private Date createdAt;
     private Date modifiedAt;

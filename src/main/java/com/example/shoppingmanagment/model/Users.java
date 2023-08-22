@@ -9,20 +9,22 @@ import org.hibernate.annotations.CurrentTimestamp;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @Builder
-@Table(name = "user")
+@Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
     private String username;
-    @Column(name = "text", columnDefinition = "TEXT")
+    @Column(name = "text", columnDefinition = "varchar(255)")
     private String password;
     @Column(name = "first_name", precision = 5, scale = 4)
     private BigDecimal firstName;
@@ -36,4 +38,11 @@ public class User {
     @Column(name = "modified_at")
     @CurrentTimestamp
     private Date modifiedAt;
+
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ShoppingSession> shoppingSessions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDetails> orderDetailses = new ArrayList<>();
+
 }

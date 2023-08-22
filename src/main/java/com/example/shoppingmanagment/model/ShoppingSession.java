@@ -9,6 +9,8 @@ import org.hibernate.annotations.CurrentTimestamp;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,10 +21,8 @@ import java.sql.Date;
 public class ShoppingSession {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
-    @Column(name = "user_id")
-    private Long userID;
     @Column(name = "total", precision = 5, scale = 4)
     private BigDecimal total;
     @Column(name = "created_at")
@@ -31,4 +31,12 @@ public class ShoppingSession {
     @Column(name = "modified_at")
     @CurrentTimestamp
     private Date modifiedAt;
+
+    @OneToMany(mappedBy = "shoppingSession", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> cartItems = new ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Users users;
+
 }

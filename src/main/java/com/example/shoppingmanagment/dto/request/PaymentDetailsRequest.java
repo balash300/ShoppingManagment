@@ -13,7 +13,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class PaymentDetailsRequest {
     private Long id;
-    private Long orderID;
     private Long amount;
     private String provider;
     private String status;

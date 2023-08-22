@@ -20,10 +20,6 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "session_id")
-    private Long sessionID;
-    @Column(name = "product_id")
-    private Long productID;
     private Long quantity;
     @Column(name = "created_at")
     @CurrentTimestamp
@@ -31,4 +27,15 @@ public class CartItem {
     @Column(name = "modified_at")
     @CurrentTimestamp
     private Date modifiedAt;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Product product;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shopping_session_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private ShoppingSession shoppingSession;
+
 }

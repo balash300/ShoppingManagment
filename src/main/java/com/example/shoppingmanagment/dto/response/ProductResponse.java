@@ -1,4 +1,4 @@
-package com.example.shoppingmanagment.dto;
+package com.example.shoppingmanagment.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDto {
+public class ProductResponse {
     private String name;
     private String desc;
     private String SKU;

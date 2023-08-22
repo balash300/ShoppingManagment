@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CurrentTimestamp;
 
 import java.sql.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -18,10 +20,8 @@ import java.sql.Date;
 public class PaymentDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
-    @Column(name = "order_id")
-    private Long orderID;
     private Long amount;
     private String provider;
     private String status;
@@ -31,5 +31,8 @@ public class PaymentDetails {
     @Column(name = "modified_at")
     @CurrentTimestamp
     private Date modifiedAt;
+
+    @OneToOne(mappedBy = "paymentDetails", cascade = CascadeType.ALL, orphanRemoval = true)
+    private OrderDetails orderDetails;
 
 }

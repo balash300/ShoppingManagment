@@ -13,8 +13,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class OrderItemsRequest {
     private Long id;
-    private Long orderID;
-    private Long productID;
     private Date createdAt;
     private Date modifiedAt;
 }

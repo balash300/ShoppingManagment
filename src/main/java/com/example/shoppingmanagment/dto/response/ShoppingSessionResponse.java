@@ -1,20 +1,19 @@
-package com.example.shoppingmanagment.dto;
+package com.example.shoppingmanagment.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaymentDetailsDto {
-    private Long amount;
-    private String provider;
-    private String status;
+public class ShoppingSessionResponse {
+    private BigDecimal total;
     private Date createdAt;
     private Date modifiedAt;
 }
